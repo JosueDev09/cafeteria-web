@@ -1,0 +1,139 @@
+---
+// Hero component para ESYMBEL Cafetería
+---
+    
+<section class="relative h-screen w-full overflow-hidden">
+  <!-- Video de fondo -->
+  <div class="absolute inset-0 z-0">
+    <video 
+      autoplay 
+      muted 
+      loop 
+      playsinline
+      class="w-full h-full object-cover opacity-40"
+    >
+      <source src="/assets/hero/hero-1.mp4" type="video/mp4" />
+    </video>
+    <div class="absolute inset-0 bg-gradient-to-b from-stone-900/60 via-stone-900/40 to-transparent"></div>
+  </div>
+
+  <!-- Contenido principal -->
+  <div class="relative z-10 h-full flex items-center">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        
+        <!-- Lado izquierdo: Texto -->
+        <div class="text-center lg:text-left space-y-6 animate-fade-in">
+          <h1 class="text-5xl sm:text-6xl lg:text-7xl font-bold text-stone-800 leading-tight">
+            ESYMBEL
+          </h1>
+          <p class="text-xl sm:text-2xl text-stone-700 font-light italic">
+            Donde cada taza cuenta una historia
+          </p>
+          <p class="text-base sm:text-lg text-stone-600 max-w-xl mx-auto lg:mx-0">
+            Descubre la perfecta combinación de sabor artesanal, ambiente acogedor y momentos inolvidables.
+          </p>
+          
+          <!-- Botones CTA -->
+          <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4">
+            <a 
+              href="#menu" 
+              class="px-8 py-3 bg-amber-600 hover:bg-amber-700 text-white font-medium rounded-full transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+            >
+              Ver Menú
+            </a>
+            <a 
+              href="#contacto" 
+              class="px-8 py-3 bg-stone-800 hover:bg-stone-900 text-white font-medium rounded-full transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+            >
+              Contáctanos
+            </a>
+          </div>
+
+          <!-- Etiquetas destacadas -->
+          <div class="flex flex-wrap gap-3 justify-center lg:justify-start pt-6">
+            <span class="px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full text-sm text-stone-700 shadow-md flex items-center gap-2 hover:bg-orange-200 transition-colors duration-300">
+                <img src="/assets/svg-iconos/cafe.svg" alt="Café" width="20" height="20" />
+                Café Artesanal
+            </span>
+            <span class="px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full text-sm text-stone-700 shadow-md flex items-center gap-2 hover:bg-yellow-200 transition-colors duration-300">
+              <img src="/assets/svg-iconos/bread.svg" alt="Repostería" width="20" height="20" /> Repostería Fresca
+            </span>
+            <span class="px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full text-sm text-stone-700 shadow-md flex items-center gap-2 hover:bg-green-200 transition-colors duration-300">
+              <img src="/assets/svg-iconos/vegano.svg" alt="Vegano" width="20" height="20" /> Opciones Veganas
+            </span>
+          </div>
+        </div>
+
+        <!-- Lado derecho: Galería de fotos -->
+        <div class="hidden lg:block">
+          <div class="grid grid-cols-2 gap-4">
+            <!-- Foto grande -->
+            <div class="col-span-2 overflow-hidden rounded-2xl shadow-2xl transform hover:scale-105 transition-transform duration-500">
+              <img 
+                src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=800&q=80" 
+                alt="Café artesanal"
+                class="w-full h-80 object-cover"
+              />
+            </div>
+            
+            <!-- Fotos pequeñas -->
+            <div class="overflow-hidden rounded-2xl shadow-xl transform hover:scale-105 transition-transform duration-500">
+              <img 
+                src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=400&q=80" 
+                alt="Espresso"
+                class="w-full h-48 object-cover"
+              />
+            </div>
+            <div class="overflow-hidden rounded-2xl shadow-xl transform hover:scale-105 transition-transform duration-500">
+              <img 
+                src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=400&q=80" 
+                alt="Croissant"
+                class="w-full h-48 object-cover"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 animate-bounce">
+    <svg class="w-6 h-6 text-stone-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+    </svg>
+  </div>
+
+</section>
+
+<style>
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in {
+    animation: fade-in 1s ease-out;
+  }
+
+  @keyframes bounce {
+    0%, 100% {
+      transform: translateY(0) translateX(-50%);
+    }
+    50% {
+      transform: translateY(-10px) translateX(-50%);
+    }
+  }
+
+  .animate-bounce {
+    animation: bounce 2s infinite;
+  }
+</style>
+
