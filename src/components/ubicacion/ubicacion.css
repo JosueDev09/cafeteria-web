@@ -1,0 +1,255 @@
+#ubicacion-section {
+  position: relative;
+  min-height: 100vh;
+  padding: 100px 20px;
+  background: linear-gradient(135deg, #f5f3f0 0%, #e8e4df 100%);
+  overflow: hidden;
+}
+
+.ubicacion-bg-svg {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 30%;
+  z-index: 1;
+  opacity: 0.3;
+}
+
+.ubicacion-bg-svg svg {
+  width: 100%;
+  height: 100%;
+}
+
+.ubicacion-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.ubicacion-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: start;
+}
+
+.ubicacion-info {
+  padding: 40px 0;
+}
+
+.ubicacion-title {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 300;
+  color: #2c1810;
+  margin-bottom: 10px;
+  letter-spacing: -0.02em;
+}
+
+.ubicacion-subtitle {
+  font-size: 1.2rem;
+  color: #8b4513;
+  margin-bottom: 50px;
+  font-weight: 300;
+}
+
+.info-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.info-card {
+  display: flex;
+  gap: 20px;
+  padding: 30px;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  border: 1px solid rgba(139, 69, 19, 0.1);
+  transition: all 0.3s ease;
+}
+
+.info-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(139, 69, 19, 0.15);
+  border-color: rgba(139, 69, 19, 0.2);
+}
+
+.info-icon {
+  flex-shrink: 0;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #8b4513 0%, #a0522d 100%);
+  border-radius: 12px;
+  color: white;
+}
+
+.info-icon img {
+  filter: brightness(0) invert(1);
+}
+
+.info-text h3 {
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: #2c1810;
+  margin-bottom: 12px;
+}
+
+.info-text p {
+  font-size: 1rem;
+  color: #5d4037;
+  line-height: 1.6;
+  margin: 4px 0;
+}
+
+.zona-ref {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(139, 69, 19, 0.1);
+  font-style: italic;
+  color: #8b4513;
+}
+
+.horarios-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.horario-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(139, 69, 19, 0.1);
+}
+
+.horario-item:last-child {
+  border-bottom: none;
+}
+
+.dia {
+  font-weight: 500;
+  color: #2c1810;
+}
+
+.hora {
+  font-weight: 600;
+  color: #8b4513;
+}
+
+.ubicacion-map {
+  position: relative;
+  height: 600px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+}
+
+.map-wrapper {
+  width: 100%;
+  height: 100%;
+}
+
+.map-wrapper iframe {
+  filter: grayscale(20%) contrast(1.1);
+}
+
+.map-overlay {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  z-index: 10;
+}
+
+.directions-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 24px;
+  background: #8b4513;
+  color: white;
+  text-decoration: none;
+  border-radius: 50px;
+  font-weight: 500;
+  font-size: 0.95rem;
+  box-shadow: 0 4px 15px rgba(139, 69, 19, 0.3);
+  transition: all 0.3s ease;
+}
+
+.directions-btn:hover {
+  background: #a0522d;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(139, 69, 19, 0.4);
+}
+
+.directions-btn svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .ubicacion-content {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .ubicacion-map {
+    height: 500px;
+  }
+}
+
+@media (max-width: 768px) {
+  #ubicacion-section {
+    padding: 60px 20px;
+  }
+
+  .ubicacion-title {
+    font-size: 2.5rem;
+  }
+
+  .info-card {
+    padding: 20px;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .info-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .ubicacion-map {
+    height: 400px;
+  }
+
+  .horario-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+}
+
+@media (max-width: 480px) {
+  .ubicacion-title {
+    font-size: 2rem;
+  }
+
+  .ubicacion-subtitle {
+    font-size: 1rem;
+  }
+
+  .info-text h3 {
+    font-size: 1.2rem;
+  }
+
+  .info-text p {
+    font-size: 0.9rem;
+  }
+}

@@ -1,3 +1,8 @@
+---
+import Menu from '../components/menu/menu.astro';
+import Footer from '../components/footer/footer.astro';
+---
+
 <!doctype html>
 <html lang="en">
 	<head>
@@ -10,7 +15,9 @@
 		<title>ESYMBEL Cafetería</title>
 	</head>
 	<body>
+		<Menu />
 		<slot />
+		<Footer />
 	</body>
 </html>
 
