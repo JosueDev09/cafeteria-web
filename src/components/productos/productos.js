@@ -6,11 +6,73 @@ gsap.registerPlugin(ScrollTrigger,Flip);
 
 
 const modal = document.querySelector(".modal");
-const modalContent = modal.querySelector(".content");
-const modalOverlay = modal.querySelector(".overlay");
-const boxes = gsap.utils.toArray(".boxes-container .box");
-const boxesContent = gsap.utils.toArray(".product-card");
-let boxIndex = undefined;
+const modalContent = modal ? modal.querySelector(".content") : null;
+const modalOverlay = modal ? modal.querySelector(".overlay") : null;
+const boxes = gsap.utils.toArray(".container-fluid .product-card");
+let activeCard = null;
+
+if (modal && modalContent && modalOverlay) {
+  // Cerrar modal al hacer click en overlay
+  modalOverlay.addEventListener("click", closeModal);
+  
+  // Cerrar modal con ESC
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && activeCard) {
+      closeModal();
+    }
+  });
+}
+
+function closeModal() {
+  if (!activeCard) return;
+  
+  const state = Flip.getState(activeCard.card);
+  activeCard.parent.appendChild(activeCard.card);
+  
+  gsap.to([modal, modalOverlay], {
+    autoAlpha: 0,
+    duration: 0.3
+  });
+  
+  Flip.from(state, {
+    duration: 0.5,
+    ease: "power2.inOut",
+    absolute: true,
+    onComplete: () => {
+      gsap.set(activeCard.card, { clearProps: "all" });
+      activeCard = null;
+      // Desbloquear scroll
+      document.body.style.overflow = '';
+    }
+  });
+}
+
+function openModal(card, index) {
+  if (activeCard) return;
+  
+  // Bloquear scroll
+  document.body.style.overflow = 'hidden';
+  
+  const state = Flip.getState(card);
+  const parent = card.parentElement;
+  
+  modalContent.appendChild(card);
+  activeCard = { card, parent, index };
+  
+  gsap.set(modal, { autoAlpha: 1 });
+  
+  Flip.from(state, {
+    duration: 0.5,
+    ease: "power2.inOut",
+    absolute: true,
+    scale: true
+  });
+  
+  gsap.to(modalOverlay, { 
+    autoAlpha: 0.7, 
+    duration: 0.3 
+  });
+}
 
 
 // Verificar si el elemento existe antes de inicializar
@@ -69,37 +131,16 @@ if (document.getElementById("productos")) {
     });
   });
 
-  boxesContent.forEach((box, i) => {
-  box.addEventListener("click", () => {
-    if (boxIndex !== undefined) {
-      const state = Flip.getState(box);
-      boxes[boxIndex].appendChild(box);
-      boxIndex = undefined;
-      gsap.to([modal, modalOverlay], {
-        autoAlpha: 0,
-        ease: "power1.inOut",
-        duration: 0.35
-      });
-      Flip.from(state, {
-        duration: 0.7,
-        ease: "power1.inOut",
-        absolute: true,
-        onComplete: () => gsap.set(box, { zIndex: "auto" })
-      });
-      gsap.set(box, { zIndex: 1002 });
-    } else {
-      const state = Flip.getState(box);
-      modalContent.appendChild(box);
-      boxIndex = i;
-      gsap.set(modal, { autoAlpha: 1 });
-      Flip.from(state, {
-        duration: 0.7,
-        ease: "power1.inOut"
-      });
-      gsap.to(modalOverlay, { autoAlpha: 0.65, duration: 0.35 });
-    }
+  // Event listeners para las tarjetas
+  boxes.forEach((card, i) => {
+    card.addEventListener("click", () => {
+      if (activeCard && activeCard.card === card) {
+        closeModal();
+      } else if (!activeCard) {
+        openModal(card, i);
+      }
+    });
   });
-});
 }
 
 
