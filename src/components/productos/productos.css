@@ -1,0 +1,156 @@
+.productos-section {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #fdfaef 0%, #fffdf4 100%);
+  padding: 4rem 0;
+}
+
+.productos-header {
+  padding: 2rem 0 3rem;
+}
+
+.productos-gallery {
+  position: relative;
+  overflow: hidden;
+}
+
+.container-fluid {
+  width: 100%;
+  padding-right: 0;
+  padding-left: 0;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.horiz-gallery-strip,
+.horiz-gallery-wrapper {
+  display: flex;
+  flex-wrap: nowrap;
+  will-change: transform;
+  position: relative;
+}
+
+.project-wrap {
+  width: 33vw;
+  padding: 2rem;
+  box-sizing: content-box;
+  flex-shrink: 0;
+}
+
+.product-card {
+  position: relative;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background: white;
+}
+
+.product-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.product-card img {
+  width: 100%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  display: block;
+}
+
+.product-info {
+  padding: 1.5rem;
+  text-align: center;
+  background: white;
+}
+
+.product-info h4 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #292524;
+  margin: 0 0 0.5rem 0;
+}
+
+.product-info p {
+  font-size: 1rem;
+  color: #78716c;
+  margin: 0;
+}
+
+.modal {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: transparent;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.modal .content {
+  height: 90vh;
+  aspect-ratio: 4/5;
+  position: relative;
+}
+
+.modal .content .product-card {
+  background-color: var(--color-blue);
+  width: 100%;
+  height: 100%;
+}
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  opacity: 0;
+}
+
+.horiz-gallery-wrapper {
+  padding: 2rem 0;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .project-wrap {
+    width: 45vw;
+  }
+}
+
+@media (max-width: 768px) {
+  .project-wrap {
+    width: 70vw;
+    padding: 1rem;
+  }
+
+  .product-info h4 {
+    font-size: 1.25rem;
+  }
+
+  .product-info p {
+    font-size: 0.875rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .project-wrap {
+    width: 85vw;
+  }
+
+  .panel.plain h3 {
+    font-size: 2rem;
+  }
+
+  .panel.plain p {
+    font-size: 1rem;
+  }
+}
