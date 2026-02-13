@@ -2,6 +2,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 
+
 gsap.registerPlugin(ScrollTrigger);
 
 
@@ -65,39 +66,7 @@ if (document.getElementById("productos")) {
   });
 
   // Event listeners para las tarjetas
-  boxesContent.forEach((box, i) => {
-    box.addEventListener("click", () => {
-      if (boxIndex !== undefined) {
-        gsap.to(box, {
-          scale: 0.9,
-          opacity: 0,
-          duration: 0.3
-        });
-        gsap.to([modal, modalOverlay], {
-          autoAlpha: 0,
-          ease: "power1.inOut",
-          duration: 0.3,
-          onComplete: () => {
-            boxes[boxIndex].appendChild(box);
-            gsap.set(box, { clearProps: "all" });
-            boxIndex = undefined;
-            document.body.style.overflow = '';
-          }
-        });
-      } else {
-        const state = Flip.getState(box);
-        modalContent.appendChild(box);
-        boxIndex = i;
-        document.body.style.overflow = 'hidden';
-        gsap.set(modal, { autoAlpha: 1 });
-        Flip.from(state, {
-          duration: 0.7,
-          ease: "power1.inOut"
-        });
-        gsap.to(modalOverlay, { autoAlpha: 0.65, duration: 0.35 });
-      }
-    });
-  });
+
 }
 
 

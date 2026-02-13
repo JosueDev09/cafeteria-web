@@ -1,6 +1,9 @@
 ---
 import Menu from '../components/menu/menu.astro';
 import Footer from '../components/footer/footer.astro';
+import Analytics from '@vercel/analytics/astro'
+const { title, 
+description = "Esymbel Cafetería - De nuestro corazón a tu taza" } = Astro.props;
 ---
 
 <!doctype html>
@@ -8,11 +11,30 @@ import Footer from '../components/footer/footer.astro';
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
+
+		<!-- Favicons -->
+		<link rel="icon" type="image/svg+xml" href="/cruz-negativa.svg" />
+		<!-- <link rel="alternate icon" type="image/x-icon" href="/favicon.ico" /> -->
+		<link rel="apple-touch-icon" sizes="180x180" href="/cruz-negativa.svg" />
+
 		<link rel="stylesheet" href="/src/styles/global.css" />
+				<!-- SEO Meta Tags -->
+		<title>{title}</title>
+		<meta name="description" content={description} />
+		<meta name="author" content="Josué Dev" />
+		<meta name="keywords" content="cafetería, café, espresso, latte, cappuccino, té, pastelería, repostería, bebidas calientes, bebidas frías" />
+		
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		
+		<!-- Twitter -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		
 		<meta name="generator" content={Astro.generator} />
-		<title>ESYMBEL Cafetería</title>
 	</head>
 	<body>
 		<Menu />

@@ -1,6 +1,17 @@
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Flip } from 'gsap/Flip';
+ import AOS from 'aos';
+  import 'aos/dist/aos.css';
+  // Inicializar AOS
+AOS.init({
+  duration: 800,
+  easing: 'ease-in-out',
+  once: false,
+  mirror: true,
+  offset: 100
+});
+
 
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(Flip);
