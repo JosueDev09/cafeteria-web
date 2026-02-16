@@ -96,7 +96,8 @@
 
 .section {
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
+  height: 100%;
   position: relative;
   overflow: hidden;
   z-index: 0;
@@ -122,4 +123,29 @@
   letter-spacing: 0.15em;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   font-weight: 900;
+}
+
+.pin-section {
+  position: relative;
+}
+
+@media (max-width: 768px) {
+  .pin-section {
+    min-height: 100vh;
+    height: auto;
+  }
+
+  .section {
+    min-height: 100vh;
+    height: auto;
+  }
+
+  .slide {
+    width: 100%;
+    height: 100vh;
+  }
+
+  .content .fill {
+    left: 0.5rem;
+  }
 }

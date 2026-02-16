@@ -30,19 +30,23 @@ if (document.getElementById("productos")) {
 
     refresh();
     
-    // Pinning and horizontal scrolling con efecto suave
-    gsap.to(pinWrap, {
-      scrollTrigger: {
-        scrub: 3,
-        trigger: ".productos-gallery",
-        pin: true,
-        start: "top top",
-        end: () => `+=${pinWrapWidth * 1.2}`,
-        invalidateOnRefresh: true,
-        anticipatePin: 1
-      },
-      x: () => -horizontalScrollLength,
-      ease: "power1.inOut"
+    // Pinning and horizontal scrolling solo en desktop (min-width: 769px)
+    const mm = gsap.matchMedia();
+    
+    mm.add("(min-width: 769px)", () => {
+      gsap.to(pinWrap, {
+        scrollTrigger: {
+          scrub: 3,
+          trigger: ".productos-gallery",
+          pin: true,
+          start: "top top",
+          end: () => `+=${pinWrapWidth}`,
+          invalidateOnRefresh: true,
+          anticipatePin: 1
+        },
+        x: () => -horizontalScrollLength,
+        ease: "power1.inOut"
+      });
     });
 
     ScrollTrigger.addEventListener("refreshInit", refresh);
